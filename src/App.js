@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <h1> Pokedex </h1>
       <Pokedex pokemons={pokemons} />
+      {/* projeto pokedex 11.1 */}
     </div>
   );
 }
