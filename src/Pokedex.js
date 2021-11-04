@@ -5,7 +5,7 @@ class Pokedex extends React.Component {
     constructor() {
         super();
         this.state = {
-            tipos: ['All', 'Fire', 'Psychic'],
+            tipos: ['All'], // , 'Fire', 'Psychic'],
             atualizar: false,
         };
         this.proximo = this.proximo.bind(this);
@@ -24,6 +24,7 @@ class Pokedex extends React.Component {
     }
         
     render() {
+        let proximo = 'initial';
         let poke = this.props.pokemons[0];
         if (!Object.keys(localStorage).includes('filtro')) {
             localStorage.setItem('filtro', 'All');
@@ -34,10 +35,12 @@ class Pokedex extends React.Component {
                 const pokes = this.props.pokemons.filter( p => p.type === localStorage.getItem('filtro'));
                 if (pokes.length <= localStorage.getItem('indice')) localStorage.setItem('indice', '0');
                 poke = pokes[localStorage.getItem('indice')];
+                pokes.length - 1 ? proximo = 'initial' : proximo = 'none';
             } else {
                 const pokes = this.props.pokemons;
                 if (pokes.length <= localStorage.getItem('indice')) localStorage.setItem('indice', '0');
                 poke = pokes[localStorage.getItem('indice')]
+                pokes.length - 1 ? proximo = 'initial' : proximo = 'none';
             }
         }
 
@@ -50,11 +53,12 @@ class Pokedex extends React.Component {
                         />
                 </div>
                 <div className="botoes">
-                    <div className="tipos">{
-                        this.state.tipos.map((p) => <button onClick={() => this.filtro(p)} key={p} >{p}</button>)
-                        }
+                    <div className="tipos">
+                        {this.state.tipos.map((p) => <button onClick={() => this.filtro(p)} key={p} >{p}</button>)}                     
+                        {this.props.pokemons.map(p => p.type).filter((v, i, arr) => i === arr.indexOf(v)).sort()
+                            .map(p => <button onClick={() => this.filtro(p)} key={p} >{p}</button>)}
                     </div>
-                    <button onClick={this.proximo}>Próximo</button>
+                    <button style={ { background: 'yellow',color: 'black', display: proximo } } onClick={this.proximo}>Próximo</button>
                 </div>
             </>
         );
