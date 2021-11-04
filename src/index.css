@@ -23,3 +23,34 @@ body {
   flex-wrap: wrap;
   margin: 10px 10px;
 }
+
+.tipos {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.botoes a,button {
+  background-color: blueviolet;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition-duration: 300ms;
+  color: aliceblue;
+  /* max-width: 25%; */
+  box-shadow: 4px 4px 4px gray;
+  border: 1px solid royalblue
+}
+
+.botoes a:hover,button:hover {
+  transition-duration: 300ms;
+  box-shadow: 2px 2px 2px gray;
+  border: none;
+}
