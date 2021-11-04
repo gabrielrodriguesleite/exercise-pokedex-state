@@ -5,7 +5,7 @@ class Pokedex extends React.Component {
     constructor() {
         super();
         this.state = {
-            tipos: ['Fire', 'Psychic'],
+            tipos: ['All', 'Fire', 'Psychic'],
             atualizar: false,
         };
         this.proximo = this.proximo.bind(this);
@@ -14,6 +14,7 @@ class Pokedex extends React.Component {
     
     filtro(f) {
         localStorage.setItem('filtro', f);
+        localStorage.setItem('indice', 0);
         this.setState(estadoAnt => Object.assign({}, estadoAnt, {atualizar: !estadoAnt.atualizar}));
     }
 
